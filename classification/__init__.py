@@ -1,3 +1,3 @@
 from classification.classification import insert_classification_data
-
+from classification.geo import insert_geo_data
 
