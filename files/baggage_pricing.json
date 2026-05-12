@@ -1,0 +1,16 @@
+{
+  "baggageTypes": {
+    "Carry-on baggage":  {"dims": ["55x40x23", "50x35x20"],  "max_w": 10},
+    "Checked baggage":   {"dims": ["158x75x70", "160x80x75"],"max_w": 23},
+    "Oversized baggage": {"dims": ["200x80x60", "220x90x70"],"max_w": 50},
+    "Fragile baggage":   {"dims": ["70x50x40", "80x60x50"],  "max_w": 25},
+    "Special baggage":   {"dims": ["100x70x50"],             "max_w": 30}
+  },
+  "sportsSubtypes": {
+    "bike":      {"dim": "120x80x40", "max_w": 25},
+    "ski_board": {"dim": "180x30x20", "max_w": 20},
+    "golf_bag":  {"dim": "120x30x30", "max_w": 15},
+    "surfboard": {"dim": "200x50x20", "max_w": 20},
+    "canoe":     {"dim": "300x80x50", "max_w": 30}
+  }
+}

@@ -1,7 +1,11 @@
 import logging
 from db_connect import create_sqlalchemy_engine
 from logging_config import setup_logging
-from classification import insert_classification_data, insert_geo_data
+from classification import (
+    insert_classification_data, 
+    insert_geo_data, 
+    insert_baggage_pricing_rules
+)
 
 logger = logging.getLogger(__name__)
 
@@ -10,7 +14,8 @@ def main():
     if engine:
         logger.info("Engine created successfully")
         #insert_classification_data(engine)
-        insert_geo_data(engine)
+        #insert_geo_data(engine)
+        insert_baggage_pricing_rules(engine)
     else:
         logger.error("Failed to create DB engine")
 
