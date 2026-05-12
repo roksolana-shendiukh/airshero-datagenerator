@@ -6,6 +6,10 @@ from classification import (
     insert_geo_data, 
     insert_baggage_pricing_rules
 )
+from objects import (
+    insert_aaa_data,
+    generate_airline_airfleet
+)
 
 logger = logging.getLogger(__name__)
 
@@ -15,7 +19,9 @@ def main():
         logger.info("Engine created successfully")
         #insert_classification_data(engine)
         #insert_geo_data(engine)
-        insert_baggage_pricing_rules(engine)
+        #insert_baggage_pricing_rules(engine)
+        #insert_aaa_data(engine)
+        generate_airline_airfleet(engine)
     else:
         logger.error("Failed to create DB engine")
 
