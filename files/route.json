@@ -1,0 +1,980 @@
+{
+  "routes": [
+    {
+      "flight_number": "PS101",
+      "iata_code": "PS",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "KBP",
+      "arrives_airport_code": "LHR",
+      "flight_range": 2185
+    },
+    {
+      "flight_number": "PS102",
+      "iata_code": "PS",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "KBP",
+      "flight_range": 2185
+    },
+    {
+      "flight_number": "PS103",
+      "iata_code": "PS",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "KBP",
+      "arrives_airport_code": "FRA",
+      "flight_range": 1584
+    },
+    {
+      "flight_number": "PS104",
+      "iata_code": "PS",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "KBP",
+      "flight_range": 1584
+    },
+    {
+      "flight_number": "PS105",
+      "iata_code": "PS",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "KBP",
+      "arrives_airport_code": "CDG",
+      "flight_range": 2032
+    },
+    {
+      "flight_number": "PS106",
+      "iata_code": "PS",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "CDG",
+      "arrives_airport_code": "KBP",
+      "flight_range": 2032
+    },
+    {
+      "flight_number": "PS107",
+      "iata_code": "PS",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "KBP",
+      "arrives_airport_code": "IST",
+      "flight_range": 1022
+    },
+    {
+      "flight_number": "PS108",
+      "iata_code": "PS",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "IST",
+      "arrives_airport_code": "KBP",
+      "flight_range": 1022
+    },
+    {
+      "flight_number": "PQ201",
+      "iata_code": "PQ",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "KBP",
+      "arrives_airport_code": "DXB",
+      "flight_range": 3489
+    },
+    {
+      "flight_number": "PQ202",
+      "iata_code": "PQ",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "KBP",
+      "flight_range": 3489
+    },
+    {
+      "flight_number": "FR401",
+      "iata_code": "FR",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "LWO",
+      "arrives_airport_code": "LGW",
+      "flight_range": 1707
+    },
+    {
+      "flight_number": "FR402",
+      "iata_code": "FR",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "LGW",
+      "arrives_airport_code": "LWO",
+      "flight_range": 1707
+    },
+    {
+      "flight_number": "FR403",
+      "iata_code": "FR",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "KRK",
+      "arrives_airport_code": "LGW",
+      "flight_range": 1410
+    },
+    {
+      "flight_number": "FR404",
+      "iata_code": "FR",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "LGW",
+      "arrives_airport_code": "KRK",
+      "flight_range": 1410
+    },
+    {
+      "flight_number": "FR405",
+      "iata_code": "FR",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "KBP",
+      "arrives_airport_code": "MAN",
+      "flight_range": 2282
+    },
+    {
+      "flight_number": "FR406",
+      "iata_code": "FR",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "MAN",
+      "arrives_airport_code": "KBP",
+      "flight_range": 2282
+    },
+    {
+      "flight_number": "FR407",
+      "iata_code": "FR",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "KBP",
+      "arrives_airport_code": "BHX",
+      "flight_range": 2257
+    },
+    {
+      "flight_number": "FR408",
+      "iata_code": "FR",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "BHX",
+      "arrives_airport_code": "KBP",
+      "flight_range": 2257
+    },
+    {
+      "flight_number": "U2701",
+      "iata_code": "U2",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "LGW",
+      "arrives_airport_code": "CDG",
+      "flight_range": 308
+    },
+    {
+      "flight_number": "U2702",
+      "iata_code": "U2",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "CDG",
+      "arrives_airport_code": "LGW",
+      "flight_range": 308
+    },
+    {
+      "flight_number": "U2705",
+      "iata_code": "U2",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "LGW",
+      "arrives_airport_code": "LYS",
+      "flight_range": 717
+    },
+    {
+      "flight_number": "U2706",
+      "iata_code": "U2",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "LYS",
+      "arrives_airport_code": "LGW",
+      "flight_range": 717
+    },
+    {
+      "flight_number": "TO1101",
+      "iata_code": "TO",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "ORY",
+      "arrives_airport_code": "CAI",
+      "flight_range": 3206
+    },
+    {
+      "flight_number": "TO1102",
+      "iata_code": "TO",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "CAI",
+      "arrives_airport_code": "ORY",
+      "flight_range": 3206
+    },
+    {
+      "flight_number": "TO1103",
+      "iata_code": "TO",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "ORY",
+      "arrives_airport_code": "FCO",
+      "flight_range": 1089
+    },
+    {
+      "flight_number": "TO1104",
+      "iata_code": "TO",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "FCO",
+      "arrives_airport_code": "ORY",
+      "flight_range": 1089
+    },
+    {
+      "flight_number": "LH801",
+      "iata_code": "LH",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "WAW",
+      "flight_range": 896
+    },
+    {
+      "flight_number": "LH802",
+      "iata_code": "LH",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "WAW",
+      "arrives_airport_code": "FRA",
+      "flight_range": 896
+    },
+    {
+      "flight_number": "LH803",
+      "iata_code": "LH",
+      "aircraft_model": "Airbus A350-900",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "DXB",
+      "flight_range": 4843
+    },
+    {
+      "flight_number": "LH804",
+      "iata_code": "LH",
+      "aircraft_model": "Airbus A350-900",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "FRA",
+      "flight_range": 4843
+    },
+    {
+      "flight_number": "LH805",
+      "iata_code": "LH",
+      "aircraft_model": "Boeing 747-400",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "JFK",
+      "flight_range": 6189
+    },
+    {
+      "flight_number": "LH806",
+      "iata_code": "LH",
+      "aircraft_model": "Boeing 747-400",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "FRA",
+      "flight_range": 6189
+    },
+    {
+      "flight_number": "LH807",
+      "iata_code": "LH",
+      "aircraft_model": "Boeing 747-400",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "PEK",
+      "flight_range": 7787
+    },
+    {
+      "flight_number": "LH808",
+      "iata_code": "LH",
+      "aircraft_model": "Boeing 747-400",
+      "departs_airport_code": "PEK",
+      "arrives_airport_code": "FRA",
+      "flight_range": 7787
+    },
+    {
+      "flight_number": "LH809",
+      "iata_code": "LH",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "MUC",
+      "flight_range": 299
+    },
+    {
+      "flight_number": "LH810",
+      "iata_code": "LH",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "MUC",
+      "arrives_airport_code": "FRA",
+      "flight_range": 299
+    },
+    {
+      "flight_number": "EW901",
+      "iata_code": "EW",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "BER",
+      "arrives_airport_code": "MXP",
+      "flight_range": 826
+    },
+    {
+      "flight_number": "EW902",
+      "iata_code": "EW",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "MXP",
+      "arrives_airport_code": "BER",
+      "flight_range": 826
+    },
+    {
+      "flight_number": "AZ1201",
+      "iata_code": "AZ",
+      "aircraft_model": "Airbus A330-300",
+      "departs_airport_code": "FCO",
+      "arrives_airport_code": "JFK",
+      "flight_range": 6866
+    },
+    {
+      "flight_number": "AZ1202",
+      "iata_code": "AZ",
+      "aircraft_model": "Airbus A330-300",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "FCO",
+      "flight_range": 6866
+    },
+    {
+      "flight_number": "AZ1203",
+      "iata_code": "AZ",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "FCO",
+      "arrives_airport_code": "CDG",
+      "flight_range": 1101
+    },
+    {
+      "flight_number": "AZ1204",
+      "iata_code": "AZ",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "CDG",
+      "arrives_airport_code": "FCO",
+      "flight_range": 1101
+    },
+    {
+      "flight_number": "AZ1205",
+      "iata_code": "AZ",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "MXP",
+      "arrives_airport_code": "FRA",
+      "flight_range": 490
+    },
+    {
+      "flight_number": "AZ1206",
+      "iata_code": "AZ",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "MXP",
+      "flight_range": 490
+    },
+    {
+      "flight_number": "LO1301",
+      "iata_code": "LO",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "WAW",
+      "arrives_airport_code": "LHR",
+      "flight_range": 1469
+    },
+    {
+      "flight_number": "LO1302",
+      "iata_code": "LO",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "WAW",
+      "flight_range": 1469
+    },
+    {
+      "flight_number": "W6503",
+      "iata_code": "W6",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "WRO",
+      "arrives_airport_code": "LGW",
+      "flight_range": 1189
+    },
+    {
+      "flight_number": "W6504",
+      "iata_code": "W6",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "LGW",
+      "arrives_airport_code": "WRO",
+      "flight_range": 1189
+    },
+    {
+      "flight_number": "TK1401",
+      "iata_code": "TK",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "IST",
+      "arrives_airport_code": "LHR",
+      "flight_range": 2489
+    },
+    {
+      "flight_number": "TK1402",
+      "iata_code": "TK",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "IST",
+      "flight_range": 2489
+    },
+    {
+      "flight_number": "TK1403",
+      "iata_code": "TK",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "IST",
+      "arrives_airport_code": "FRA",
+      "flight_range": 1837
+    },
+    {
+      "flight_number": "TK1404",
+      "iata_code": "TK",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "IST",
+      "flight_range": 1837
+    },
+    {
+      "flight_number": "TK1405",
+      "iata_code": "TK",
+      "aircraft_model": "Airbus A321neo",
+      "departs_airport_code": "IST",
+      "arrives_airport_code": "CAI",
+      "flight_range": 1263
+    },
+    {
+      "flight_number": "TK1406",
+      "iata_code": "TK",
+      "aircraft_model": "Airbus A321neo",
+      "departs_airport_code": "CAI",
+      "arrives_airport_code": "IST",
+      "flight_range": 1263
+    },
+    {
+      "flight_number": "TK1407",
+      "iata_code": "TK",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "IST",
+      "arrives_airport_code": "ESB",
+      "flight_range": 380
+    },
+    {
+      "flight_number": "TK1408",
+      "iata_code": "TK",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "ESB",
+      "arrives_airport_code": "IST",
+      "flight_range": 380
+    },
+    {
+      "flight_number": "PC1501",
+      "iata_code": "PC",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "SAW",
+      "arrives_airport_code": "FRA",
+      "flight_range": 1900
+    },
+    {
+      "flight_number": "PC1502",
+      "iata_code": "PC",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "SAW",
+      "flight_range": 1900
+    },
+    {
+      "flight_number": "PC1503",
+      "iata_code": "PC",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "SAW",
+      "arrives_airport_code": "MUC",
+      "flight_range": 1610
+    },
+    {
+      "flight_number": "PC1504",
+      "iata_code": "PC",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "MUC",
+      "arrives_airport_code": "SAW",
+      "flight_range": 1610
+    },
+    {
+      "flight_number": "EK1601",
+      "iata_code": "EK",
+      "aircraft_model": "Airbus A380-800",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "LHR",
+      "flight_range": 5498
+    },
+    {
+      "flight_number": "EK1602",
+      "iata_code": "EK",
+      "aircraft_model": "Airbus A380-800",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "DXB",
+      "flight_range": 5498
+    },
+    {
+      "flight_number": "EK1603",
+      "iata_code": "EK",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "LAX",
+      "flight_range": 13400
+    },
+    {
+      "flight_number": "EK1604",
+      "iata_code": "EK",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "LAX",
+      "arrives_airport_code": "DXB",
+      "flight_range": 13400
+    },
+    {
+      "flight_number": "EK1605",
+      "iata_code": "EK",
+      "aircraft_model": "Airbus A380-800",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "SYD",
+      "flight_range": 12044
+    },
+    {
+      "flight_number": "EK1606",
+      "iata_code": "EK",
+      "aircraft_model": "Airbus A380-800",
+      "departs_airport_code": "SYD",
+      "arrives_airport_code": "DXB",
+      "flight_range": 12044
+    },
+    {
+      "flight_number": "FZ1803",
+      "iata_code": "FZ",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "IST",
+      "flight_range": 3028
+    },
+    {
+      "flight_number": "FZ1804",
+      "iata_code": "FZ",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "IST",
+      "arrives_airport_code": "DXB",
+      "flight_range": 3028
+    },
+    {
+      "flight_number": "FZ1805",
+      "iata_code": "FZ",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "DWC",
+      "arrives_airport_code": "CAI",
+      "flight_range": 2409
+    },
+    {
+      "flight_number": "FZ1806",
+      "iata_code": "FZ",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "CAI",
+      "arrives_airport_code": "DWC",
+      "flight_range": 2409
+    },
+    {
+      "flight_number": "EY1701",
+      "iata_code": "EY",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "AUH",
+      "arrives_airport_code": "LHR",
+      "flight_range": 5517
+    },
+    {
+      "flight_number": "EY1702",
+      "iata_code": "EY",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "AUH",
+      "flight_range": 5517
+    },
+    {
+      "flight_number": "EY1705",
+      "iata_code": "EY",
+      "aircraft_model": "Airbus A380-800",
+      "departs_airport_code": "AUH",
+      "arrives_airport_code": "MEL",
+      "flight_range": 11652
+    },
+    {
+      "flight_number": "EY1706",
+      "iata_code": "EY",
+      "aircraft_model": "Airbus A380-800",
+      "departs_airport_code": "MEL",
+      "arrives_airport_code": "AUH",
+      "flight_range": 11652
+    },
+    {
+      "flight_number": "MS1901",
+      "iata_code": "MS",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "CAI",
+      "arrives_airport_code": "JFK",
+      "flight_range": 9016
+    },
+    {
+      "flight_number": "MS1902",
+      "iata_code": "MS",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "CAI",
+      "flight_range": 9016
+    },
+    {
+      "flight_number": "AA2001",
+      "iata_code": "AA",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "LHR",
+      "flight_range": 5539
+    },
+    {
+      "flight_number": "AA2002",
+      "iata_code": "AA",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "JFK",
+      "flight_range": 5539
+    },
+    {
+      "flight_number": "AA2003",
+      "iata_code": "AA",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "MIA",
+      "flight_range": 1757
+    },
+    {
+      "flight_number": "AA2004",
+      "iata_code": "AA",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "MIA",
+      "arrives_airport_code": "JFK",
+      "flight_range": 1757
+    },
+    {
+      "flight_number": "AA2005",
+      "iata_code": "AA",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "LAX",
+      "arrives_airport_code": "ORD",
+      "flight_range": 2802
+    },
+    {
+      "flight_number": "AA2006",
+      "iata_code": "AA",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "ORD",
+      "arrives_airport_code": "LAX",
+      "flight_range": 2802
+    },
+    {
+      "flight_number": "DL2101",
+      "iata_code": "DL",
+      "aircraft_model": "Airbus A330-300",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "CDG",
+      "flight_range": 5834
+    },
+    {
+      "flight_number": "DL2102",
+      "iata_code": "DL",
+      "aircraft_model": "Airbus A330-300",
+      "departs_airport_code": "CDG",
+      "arrives_airport_code": "JFK",
+      "flight_range": 5834
+    },
+    {
+      "flight_number": "DL2103",
+      "iata_code": "DL",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "LGA",
+      "arrives_airport_code": "ORD",
+      "flight_range": 1177
+    },
+    {
+      "flight_number": "DL2104",
+      "iata_code": "DL",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "ORD",
+      "arrives_airport_code": "LGA",
+      "flight_range": 1177
+    },
+    {
+      "flight_number": "DL2105",
+      "iata_code": "DL",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "LAX",
+      "flight_range": 3974
+    },
+    {
+      "flight_number": "DL2106",
+      "iata_code": "DL",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "LAX",
+      "arrives_airport_code": "JFK",
+      "flight_range": 3974
+    },
+    {
+      "flight_number": "UA2201",
+      "iata_code": "UA",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "ORD",
+      "arrives_airport_code": "LHR",
+      "flight_range": 6344
+    },
+    {
+      "flight_number": "UA2202",
+      "iata_code": "UA",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "ORD",
+      "flight_range": 6344
+    },
+    {
+      "flight_number": "UA2203",
+      "iata_code": "UA",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "IAH",
+      "arrives_airport_code": "ORD",
+      "flight_range": 1491
+    },
+    {
+      "flight_number": "UA2204",
+      "iata_code": "UA",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "ORD",
+      "arrives_airport_code": "IAH",
+      "flight_range": 1491
+    },
+    {
+      "flight_number": "UA2205",
+      "iata_code": "UA",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "IAH",
+      "arrives_airport_code": "LAX",
+      "flight_range": 2215
+    },
+    {
+      "flight_number": "UA2206",
+      "iata_code": "UA",
+      "aircraft_model": "Boeing 737 MAX 8",
+      "departs_airport_code": "LAX",
+      "arrives_airport_code": "IAH",
+      "flight_range": 2215
+    },
+    {
+      "flight_number": "QF2301",
+      "iata_code": "QF",
+      "aircraft_model": "Airbus A380-800",
+      "departs_airport_code": "SYD",
+      "arrives_airport_code": "LHR",
+      "flight_range": 15200
+    },
+    {
+      "flight_number": "QF2302",
+      "iata_code": "QF",
+      "aircraft_model": "Airbus A380-800",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "SYD",
+      "flight_range": 15200
+    },
+    {
+      "flight_number": "QF2303",
+      "iata_code": "QF",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "SYD",
+      "arrives_airport_code": "MEL",
+      "flight_range": 705
+    },
+    {
+      "flight_number": "QF2304",
+      "iata_code": "QF",
+      "aircraft_model": "Boeing 737-800",
+      "departs_airport_code": "MEL",
+      "arrives_airport_code": "SYD",
+      "flight_range": 705
+    },
+    {
+      "flight_number": "JJ2401",
+      "iata_code": "JJ",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "GRU",
+      "arrives_airport_code": "GIG",
+      "flight_range": 337
+    },
+    {
+      "flight_number": "JJ2402",
+      "iata_code": "JJ",
+      "aircraft_model": "Airbus A320neo",
+      "departs_airport_code": "GIG",
+      "arrives_airport_code": "GRU",
+      "flight_range": 337
+    },
+    {
+      "flight_number": "JJ2403",
+      "iata_code": "JJ",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "GRU",
+      "arrives_airport_code": "MIA",
+      "flight_range": 6573
+    },
+    {
+      "flight_number": "JJ2404",
+      "iata_code": "JJ",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "MIA",
+      "arrives_airport_code": "GRU",
+      "flight_range": 6573
+    },
+    {
+      "flight_number": "JJ2405",
+      "iata_code": "JJ",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "GRU",
+      "arrives_airport_code": "CDG",
+      "flight_range": 9405
+    },
+    {
+      "flight_number": "JJ2406",
+      "iata_code": "JJ",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "CDG",
+      "arrives_airport_code": "GRU",
+      "flight_range": 9405
+    },
+    {
+      "flight_number": "CZ2501",
+      "iata_code": "CZ",
+      "aircraft_model": "Airbus A350-900",
+      "departs_airport_code": "CAN",
+      "arrives_airport_code": "LHR",
+      "flight_range": 9495
+    },
+    {
+      "flight_number": "CZ2502",
+      "iata_code": "CZ",
+      "aircraft_model": "Airbus A350-900",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "CAN",
+      "flight_range": 9495
+    },
+    {
+      "flight_number": "CZ2503",
+      "iata_code": "CZ",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "PVG",
+      "arrives_airport_code": "DXB",
+      "flight_range": 6448
+    },
+    {
+      "flight_number": "CZ2504",
+      "iata_code": "CZ",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "PVG",
+      "flight_range": 6448
+    },
+    {
+      "flight_number": "CZ2505",
+      "iata_code": "CZ",
+      "aircraft_model": "Airbus A321neo",
+      "departs_airport_code": "PKX",
+      "arrives_airport_code": "SHA",
+      "flight_range": 1026
+    },
+    {
+      "flight_number": "CZ2506",
+      "iata_code": "CZ",
+      "aircraft_model": "Airbus A321neo",
+      "departs_airport_code": "SHA",
+      "arrives_airport_code": "PKX",
+      "flight_range": 1026
+    },
+    {
+      "flight_number": "CZ2507",
+      "iata_code": "CZ",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "PEK",
+      "arrives_airport_code": "FRA",
+      "flight_range": 7787
+    },
+    {
+      "flight_number": "CZ2508",
+      "iata_code": "CZ",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "FRA",
+      "arrives_airport_code": "PEK",
+      "flight_range": 7787
+    },
+    {
+      "flight_number": "CZ2509",
+      "iata_code": "CZ",
+      "aircraft_model": "Airbus A321neo",
+      "departs_airport_code": "SHA",
+      "arrives_airport_code": "CAN",
+      "flight_range": 1176
+    },
+    {
+      "flight_number": "CZ2510",
+      "iata_code": "CZ",
+      "aircraft_model": "Airbus A321neo",
+      "departs_airport_code": "CAN",
+      "arrives_airport_code": "SHA",
+      "flight_range": 1176
+    },
+    {
+      "flight_number": "BA603",
+      "iata_code": "BA",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "JFK",
+      "flight_range": 5539
+    },
+    {
+      "flight_number": "BA604",
+      "iata_code": "BA",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "LHR",
+      "flight_range": 5539
+    },
+    {
+      "flight_number": "AF101",
+      "iata_code": "AF",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "CDG",
+      "arrives_airport_code": "JFK",
+      "flight_range": 5834
+    },
+    {
+      "flight_number": "AF102",
+      "iata_code": "AF",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "JFK",
+      "arrives_airport_code": "CDG",
+      "flight_range": 5834
+    },
+    {
+      "flight_number": "AF103",
+      "iata_code": "AF",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "CDG",
+      "arrives_airport_code": "DXB",
+      "flight_range": 5239
+    },
+    {
+      "flight_number": "AF104",
+      "iata_code": "AF",
+      "aircraft_model": "Boeing 787-9 Dreamliner",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "CDG",
+      "flight_range": 5239
+    },
+    {
+      "flight_number": "BA601",
+      "iata_code": "BA",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "LHR",
+      "arrives_airport_code": "DXB",
+      "flight_range": 5498
+    },
+    {
+      "flight_number": "BA602",
+      "iata_code": "BA",
+      "aircraft_model": "Boeing 777-300ER",
+      "departs_airport_code": "DXB",
+      "arrives_airport_code": "LHR",
+      "flight_range": 5498
+    }
+  ]
+}

@@ -28,9 +28,10 @@ def generate_airline_airfleet(engine):
         logger.info("Long haul aircraft: %d", len(long_haul))
 
         airline_ranges = [dict(row._mapping) for row in conn.execute(text("""
-            SELECT r.airline_id, MIN(r.flight_range) AS min_range, MAX(r.flight_range) AS max_range
-            FROM Route r
-            GROUP BY r.airline_id
+            SELECT f.airline_id, MIN(r.flight_range) AS min_range, MAX(r.flight_range) AS max_range
+            FROM Flight f
+            JOIN Route r ON f.route_id = r.route_id
+            GROUP BY f.airline_id
         """))]
 
         new_pairs = []
@@ -70,4 +71,3 @@ def generate_airline_airfleet(engine):
 
         logger.info("Total AirlineAirfleet pairs: %d", len(existing_pairs))
 
-        
