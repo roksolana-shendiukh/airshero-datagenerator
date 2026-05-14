@@ -5,3 +5,5 @@ from objects.flight import generate_flights
 from objects.schedule import generate_flight_schedules
 from objects.seat_layout import generate_seat_layout
 from objects.flight_class import generate_flight_class
+from objects.baggage_pricing import generate_baggage_pricing
+
