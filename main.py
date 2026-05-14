@@ -14,6 +14,9 @@ from objects import (
     generate_flight_schedules,
     generate_seat_layout
 )
+from documentary import (
+    generate_scheduled_flights
+)
 
 logger = logging.getLogger(__name__)
 
@@ -29,7 +32,8 @@ def main():
         #generate_flights(engine)
         #generate_airline_airfleet(engine)
         #generate_flight_schedules(engine)
-        generate_seat_layout(engine)
+        #generate_seat_layout(engine)
+        generate_scheduled_flights(engine)
     else:
         logger.error("Failed to create DB engine")
 

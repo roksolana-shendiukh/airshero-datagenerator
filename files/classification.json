@@ -227,6 +227,7 @@
     { "flight_status_name": "Arrived"   },
     { "flight_status_name": "Delayed"   },
     { "flight_status_name": "Cancelled" },
+    { "flight_status_name": "Completed" },
     { "flight_status_name": "AutoGenerate" }
   ],
 

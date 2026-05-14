@@ -1,0 +1,3 @@
+from documentary.scheduled_flight import generate_scheduled_flights
+
+
