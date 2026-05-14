@@ -10,7 +10,8 @@ from objects import (
     insert_aaa_data,
     generate_airline_airfleet,
     insert_routes,
-    generate_flights
+    generate_flights,
+    generate_flight_schedules
 )
 
 logger = logging.getLogger(__name__)
@@ -25,7 +26,8 @@ def main():
         #insert_aaa_data(engine)
         #insert_routes(engine)
         #generate_flights(engine)
-        generate_airline_airfleet(engine)
+        #generate_airline_airfleet(engine)
+        generate_flight_schedules(engine)
     else:
         logger.error("Failed to create DB engine")
 
