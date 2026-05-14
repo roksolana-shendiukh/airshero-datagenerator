@@ -4,8 +4,8 @@ from sqlalchemy import text
 
 logger = logging.getLogger(__name__)
 
-SHORT_RANGE = 3000
-LONG_RANGE  = 8000
+SHORT_RANGE = 7000
+LONG_RANGE  = 12000
 
 
 def generate_airline_airfleet(engine):

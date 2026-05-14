@@ -23,9 +23,9 @@ def main():
         #insert_geo_data(engine)
         #insert_baggage_pricing_rules(engine)
         #insert_aaa_data(engine)
-        #generate_airline_airfleet(engine)
         #insert_routes(engine)
-        generate_flights(engine)
+        #generate_flights(engine)
+        generate_airline_airfleet(engine)
     else:
         logger.error("Failed to create DB engine")
 
