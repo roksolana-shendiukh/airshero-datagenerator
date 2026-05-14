@@ -1,3 +1,3 @@
 from documentary.scheduled_flight import generate_scheduled_flights
-
+from documentary.flight_price import generate_flight_prices
 
