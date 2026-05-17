@@ -14,7 +14,8 @@ from objects import (
     generate_flight_schedules,
     generate_seat_layout,
     generate_flight_class,
-    generate_baggage_pricing
+    generate_baggage_pricing,
+    generate_passengers
 )
 from documentary import (
     generate_scheduled_flights,
@@ -41,7 +42,8 @@ def main():
         #generate_scheduled_flights(engine)
         #generate_flight_prices(engine)    
         #generate_baggage_pricing(engine)    
-        generate_bookings(engine)
+        #generate_bookings(engine)
+        generate_passengers(engine)
     else:
         logger.error("Failed to create DB engine")
 
