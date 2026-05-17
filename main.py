@@ -20,7 +20,8 @@ from objects import (
 from documentary import (
     generate_scheduled_flights,
     generate_flight_prices,
-    generate_bookings
+    generate_bookings,
+    generate_passenger_documents
 )
 
 logger = logging.getLogger(__name__)
@@ -43,7 +44,8 @@ def main():
         #generate_flight_prices(engine)    
         #generate_baggage_pricing(engine)    
         #generate_bookings(engine)
-        generate_passengers(engine)
+        #generate_passengers(engine)
+        generate_passenger_documents(engine)
     else:
         logger.error("Failed to create DB engine")
 
