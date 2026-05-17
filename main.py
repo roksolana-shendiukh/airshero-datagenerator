@@ -1,6 +1,7 @@
 import logging
 from db_connect import create_sqlalchemy_engine
 from logging_config import setup_logging
+from cleanup import cleanup_empty_bookings
 from classification import (
     insert_classification_data, 
     insert_geo_data, 
@@ -21,7 +22,8 @@ from documentary import (
     generate_scheduled_flights,
     generate_flight_prices,
     generate_bookings,
-    generate_passenger_documents
+    generate_passenger_documents,
+    generate_booking_items
 )
 
 logger = logging.getLogger(__name__)
@@ -45,7 +47,9 @@ def main():
         #generate_baggage_pricing(engine)    
         #generate_bookings(engine)
         #generate_passengers(engine)
-        generate_passenger_documents(engine)
+        #generate_passenger_documents(engine)
+        #generate_booking_items(engine)
+        cleanup_empty_bookings(engine)
     else:
         logger.error("Failed to create DB engine")
 
