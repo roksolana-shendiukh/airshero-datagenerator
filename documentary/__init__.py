@@ -3,3 +3,4 @@ from documentary.flight_price import generate_flight_prices
 from documentary.booking import generate_bookings
 from documentary.passenger_document import generate_passenger_documents
 from documentary.booking_item import generate_booking_items
+from documentary.booking_update import update_bookings
