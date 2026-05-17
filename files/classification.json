@@ -260,9 +260,10 @@
   ],
 
   "paymentStatuses": [
-    { "payment_status_name": "Paid"               },
-    { "payment_status_name": "Partially Pending"  },
-    { "payment_status_name": "Refunded"           }
+    { "payment_status_name": "Paid"              },
+    { "payment_status_name": "Partially Pending" },
+    { "payment_status_name": "Refunded"          },
+    { "payment_status_name": "Failed"            }
   ],
 
   "paymentMethods": [
