@@ -6,3 +6,4 @@ from documentary.booking_item import generate_booking_items
 from documentary.booking_update import update_bookings
 from documentary.payment import generate_payments
 from documentary.flight_operation import generate_flight_operations
+from documentary.flightcrew_flightoperation import generate_flight_crew_operations
