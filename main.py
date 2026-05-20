@@ -18,7 +18,8 @@ from objects import (
     generate_baggage_pricing,
     generate_passengers,
     insert_flight_crew,
-    generate_flight_flight_crew
+    generate_flight_flight_crew,
+    generate_checkin_agents
 )
 from documentary import (
     generate_scheduled_flights,
@@ -61,7 +62,8 @@ def main():
         #insert_flight_crew(engine)
         #generate_flight_flight_crew(engine)
         #generate_flight_operations(engine)
-        generate_flight_crew_operations(engine)
+        #generate_flight_crew_operations(engine)
+        generate_checkin_agents(engine)
     else:
         logger.error("Failed to create DB engine")
 

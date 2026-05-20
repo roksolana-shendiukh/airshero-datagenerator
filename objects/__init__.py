@@ -8,3 +8,5 @@ from objects.flight_class import generate_flight_class
 from objects.baggage_pricing import generate_baggage_pricing
 from objects.passenger import generate_passengers
 from objects.flight_crew import insert_flight_crew, generate_flight_flight_crew
+from objects.checkin_agent import generate_checkin_agents
+
