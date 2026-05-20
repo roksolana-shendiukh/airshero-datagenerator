@@ -8,5 +8,5 @@ from documentary.payment import generate_payments
 from documentary.flight_operation import generate_flight_operations
 from documentary.flightcrew_flightoperation import generate_flight_crew_operations
 from documentary.checkinagent_flightoperations import generate_checkin_agent_operations
-
+from documentary.boarding_pass import generate_boarding_passes
 
