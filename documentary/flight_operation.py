@@ -124,7 +124,7 @@ def generate_flight_operations(engine):
                 "sf_id":     f.schedule_flight_id,
                 "af_id":     f.airfleet_id,
                 "gate_id":   gate_id,
-                "op_status": flight_op_statuses["Arrived"],
+                "op_status": flight_op_statuses["Completed"],
                 "op_state":  state_id,
                 "act_dep":   actual_departure,
                 "act_arr":   actual_arrival,
