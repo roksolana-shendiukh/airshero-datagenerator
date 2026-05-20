@@ -49,7 +49,6 @@ def _issue_datetime(boarding_start, departs_date, dep_time):
 
 
 def generate_boarding_passes(engine):
-    now = datetime.utcnow()
 
     with engine.begin() as conn:
         class_name_by_id = {
@@ -187,7 +186,6 @@ def generate_boarding_passes(engine):
                     "bi_id":      bi_id,
                     "ticket":     _generate_ticket_number(),
                     "issue_dt":   issue_dt,
-                    "created_at": now,
                 })
                 used_booking_items.add(bi_id)
                 stats["boarding_passes_created"] += 1
@@ -197,11 +195,11 @@ def generate_boarding_passes(engine):
                         INSERT INTO BoardingPass (
                             checkin_agent_flight_operation_id, seat_layout_id,
                             booking_item_id, boarding_pass_ticket_number,
-                            boarding_pass_issue_date_time, created_at
+                            boarding_pass_issue_date_time
                         ) VALUES (
                             :cafo_id, :seat_id,
                             :bi_id, :ticket,
-                            :issue_dt, :created_at
+                            :issue_dt
                         )
                     """), batch)
                     total_inserted += len(batch)
@@ -217,11 +215,11 @@ def generate_boarding_passes(engine):
                 INSERT INTO BoardingPass (
                     checkin_agent_flight_operation_id, seat_layout_id,
                     booking_item_id, boarding_pass_ticket_number,
-                    boarding_pass_issue_date_time, created_at
+                    boarding_pass_issue_date_time
                 ) VALUES (
                     :cafo_id, :seat_id,
                     :bi_id, :ticket,
-                    :issue_dt, :created_at
+                    :issue_dt
                 )
             """), batch)
             total_inserted += len(batch)

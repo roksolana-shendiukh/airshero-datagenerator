@@ -1,6 +1,6 @@
 import random
 import logging
-from datetime import date, datetime, timedelta
+from datetime import date, timedelta
 from sqlalchemy import text
 
 logger = logging.getLogger(__name__)
@@ -69,22 +69,20 @@ def _document_codes_for_passenger(age):
 
 
 def generate_passenger_documents(engine):
-    now = datetime.utcnow()
-
     with engine.connect() as conn:
         doc_type_map = {
             code: tid
             for tid, code in conn.execute(text("SELECT document_type_id, document_type_code FROM DocumentType"))
         }
 
-        popular_countries = conn.execute(text("""
+        popular_countries = list(conn.execute(text("""
             SELECT citizenship_id FROM Citizenship
             WHERE citizenship_name IN ('Ukrainian', 'British', 'American')
-        """)).scalars().all()
-        popular_countries = list(popular_countries)
+        """)).scalars().all())
 
-        all_countries = conn.execute(text("SELECT citizenship_id FROM Citizenship")).scalars().all()
-        all_countries = list(all_countries)
+        all_countries = list(conn.execute(text(
+            "SELECT citizenship_id FROM Citizenship"
+        )).scalars().all())
 
         max_issue_date = conn.execute(text(
             "SELECT CAST(MAX(departs_date) AS DATE) FROM ScheduledFlight"
@@ -129,7 +127,6 @@ def generate_passenger_documents(engine):
                     "document_number":         _random_document_number(code),
                     "document_date_of_issue":  issue_date,
                     "document_date_of_expire": expire_date,
-                    "created_at":              now,
                 })
 
             batch.extend(docs)
@@ -139,10 +136,10 @@ def generate_passenger_documents(engine):
                 conn.execute(text("""
                     INSERT INTO PassengerDocument
                         (passenger_id, citizenship_id, document_type_id, document_number,
-                         document_date_of_issue, document_date_of_expire, created_at)
+                         document_date_of_issue, document_date_of_expire)
                     VALUES
                         (:passenger_id, :citizenship_id, :document_type_id, :document_number,
-                         :document_date_of_issue, :document_date_of_expire, :created_at)
+                         :document_date_of_issue, :document_date_of_expire)
                 """), batch)
                 inserted += len(batch)
                 logger.info("Inserted %d documents...", inserted)
@@ -152,10 +149,10 @@ def generate_passenger_documents(engine):
             conn.execute(text("""
                 INSERT INTO PassengerDocument
                     (passenger_id, citizenship_id, document_type_id, document_number,
-                     document_date_of_issue, document_date_of_expire, created_at)
+                     document_date_of_issue, document_date_of_expire)
                 VALUES
                     (:passenger_id, :citizenship_id, :document_type_id, :document_number,
-                     :document_date_of_issue, :document_date_of_expire, :created_at)
+                     :document_date_of_issue, :document_date_of_expire)
             """), batch)
             inserted += len(batch)
 
@@ -163,5 +160,3 @@ def generate_passenger_documents(engine):
     logger.info("Average docs/passenger: %.2f", inserted / total_passengers if total_passengers else 0)
     logger.info("1 document:  %d (%.1f%%)", doc_count_stats[1], doc_count_stats[1] / total_passengers * 100)
     logger.info("2 documents: %d (%.1f%%)", doc_count_stats[2], doc_count_stats[2] / total_passengers * 100)
-
-

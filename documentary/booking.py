@@ -78,7 +78,6 @@ def generate_bookings(engine):
                     "booking_date_time":    booking_date,
                     "booking_total_amount": 0,
                     "booking_number":       _random_booking_number(),
-                    "created_at":           booking_date,
                 })
                 total_inserted += 1
 
@@ -88,14 +87,12 @@ def generate_bookings(engine):
                             booking_status_id,
                             booking_date_time,
                             booking_total_amount,
-                            booking_number,
-                            created_at
+                            booking_number
                         ) VALUES (
                             :booking_status_id,
                             :booking_date_time,
                             :booking_total_amount,
-                            :booking_number,
-                            :created_at
+                            :booking_number
                         )
                     """), batch)
                     batch.clear()
@@ -106,14 +103,12 @@ def generate_bookings(engine):
                     booking_status_id,
                     booking_date_time,
                     booking_total_amount,
-                    booking_number,
-                    created_at
+                    booking_number
                 ) VALUES (
                     :booking_status_id,
                     :booking_date_time,
                     :booking_total_amount,
-                    :booking_number,
-                    :created_at
+                    :booking_number
                 )
             """), batch)
 

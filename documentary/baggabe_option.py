@@ -1,7 +1,7 @@
 import random
 import logging
 from collections import defaultdict
-from datetime import date, datetime
+from datetime import date
 from sqlalchemy import text
 
 logger = logging.getLogger(__name__)
@@ -44,7 +44,6 @@ def _calc_age(dob, today):
 
 
 def generate_baggage_options(engine):
-    now   = datetime.utcnow()
     today = date.today()
 
     with engine.begin() as conn:
@@ -157,7 +156,6 @@ def generate_baggage_options(engine):
                 "booking_item_id":              bi["booking_item_id"],
                 "baggage_pricing_in_flight_id": first_rule["baggage_pricing_in_flight_id"],
                 "baggage_quantity":             random.randint(min_q, max_q),
-                "created_at":                   now,
             })
 
             remaining_rules = [r for r in unique_rules if r["baggage_type_id"] != first_rule["baggage_type_id"]]
@@ -168,15 +166,14 @@ def generate_baggage_options(engine):
                     "booking_item_id":              bi["booking_item_id"],
                     "baggage_pricing_in_flight_id": extra_rule["baggage_pricing_in_flight_id"],
                     "baggage_quantity":             random.randint(min_q, max_q),
-                    "created_at":                   now,
                 })
 
             if len(batch) >= BATCH_SIZE:
                 conn.execute(text("""
                     INSERT INTO BaggageOptionInFlight
-                        (booking_item_id, baggage_pricing_in_flight_id, baggage_quantity, created_at)
+                        (booking_item_id, baggage_pricing_in_flight_id, baggage_quantity)
                     VALUES
-                        (:booking_item_id, :baggage_pricing_in_flight_id, :baggage_quantity, :created_at)
+                        (:booking_item_id, :baggage_pricing_in_flight_id, :baggage_quantity)
                 """), batch)
                 inserted += len(batch)
                 logger.info("Inserted: %d", inserted)
@@ -185,9 +182,9 @@ def generate_baggage_options(engine):
         if batch:
             conn.execute(text("""
                 INSERT INTO BaggageOptionInFlight
-                    (booking_item_id, baggage_pricing_in_flight_id, baggage_quantity, created_at)
+                    (booking_item_id, baggage_pricing_in_flight_id, baggage_quantity)
                 VALUES
-                    (:booking_item_id, :baggage_pricing_in_flight_id, :baggage_quantity, :created_at)
+                    (:booking_item_id, :baggage_pricing_in_flight_id, :baggage_quantity)
             """), batch)
             inserted += len(batch)
 

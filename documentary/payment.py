@@ -1,6 +1,6 @@
 import random
 import logging
-from datetime import datetime, timedelta
+from datetime import timedelta
 from sqlalchemy import text
 
 logger = logging.getLogger(__name__)
@@ -23,8 +23,6 @@ def _pick_method(method_ids, card_id):
 
 
 def generate_payments(engine):
-    now = datetime.utcnow()
-
     with engine.begin() as conn:
         logger.info("Loading data...")
 
@@ -88,7 +86,6 @@ def generate_payments(engine):
                         "payment_method_id": _pick_method(method_ids, card_id),
                         "payment_date_time": _payment_date(booking_dt),
                         "payment_amount":    total,
-                        "created_at":        now,
                     })
                 elif random.random() < PARTIAL_PERCENT:
                     num_parts = random.choice([2, 3])
@@ -107,7 +104,6 @@ def generate_payments(engine):
                             "payment_method_id": _pick_method(method_ids, card_id),
                             "payment_date_time": _payment_date(booking_dt),
                             "payment_amount":    part_amount,
-                            "created_at":        now,
                         })
                 else:
                     batch.append({
@@ -116,7 +112,6 @@ def generate_payments(engine):
                         "payment_method_id": _pick_method(method_ids, card_id),
                         "payment_date_time": _payment_date(booking_dt),
                         "payment_amount":    total,
-                        "created_at":        now,
                     })
 
                 processed += 1
@@ -125,10 +120,10 @@ def generate_payments(engine):
                 conn.execute(text("""
                     INSERT INTO Payment
                         (booking_id, payment_status_id, payment_method_id,
-                         payment_date_time, payment_amount, created_at)
+                         payment_date_time, payment_amount)
                     VALUES
                         (:booking_id, :payment_status_id, :payment_method_id,
-                         :payment_date_time, :payment_amount, :created_at)
+                         :payment_date_time, :payment_amount)
                 """), batch)
                 batch.clear()
 
@@ -136,3 +131,5 @@ def generate_payments(engine):
             logger.info("Processed %d / %d bookings", processed, total_bookings)
 
     logger.info("Payments inserted: %d, skipped (cancelled): %d", processed, skipped)
+
+    

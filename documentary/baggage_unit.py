@@ -1,7 +1,6 @@
 import random
 import string
 import logging
-from datetime import datetime
 from collections import defaultdict
 from sqlalchemy import text
 
@@ -30,8 +29,6 @@ def _generate_tracking_number():
 
 
 def generate_baggage_units(engine):
-    now = datetime.utcnow()
-
     with engine.begin() as conn:
         baggage_type_names = {
             row[0]: row[1]
@@ -98,15 +95,15 @@ def generate_baggage_units(engine):
                 skipped_no_bp += baggage_quantity
                 continue
 
-            type_name        = baggage_type_names.get(baggage_type_id, "")
-            overweight_rate  = OVERWEIGHT_RATE_BY_TYPE.get(type_name, 0.08)
-            dimensions       = [r["baggage_dimension"] for r in rules_by_type.get(baggage_type_id, [])]
+            type_name       = baggage_type_names.get(baggage_type_id, "")
+            overweight_rate = OVERWEIGHT_RATE_BY_TYPE.get(type_name, 0.08)
+            dimensions      = [r["baggage_dimension"] for r in rules_by_type.get(baggage_type_id, [])]
 
             for _ in range(baggage_quantity):
-                tracking   = _generate_tracking_number()
-                dimension  = random.choice(dimensions) if dimensions else "60x40x30"
+                tracking      = _generate_tracking_number()
+                dimension     = random.choice(dimensions) if dimensions else "60x40x30"
                 is_overweight = random.random() < overweight_rate
-                unit_weight = round(
+                unit_weight   = round(
                     random.uniform(max_weight, max_weight * 1.3) if is_overweight
                     else random.uniform(0.5, max_weight), 2
                 )
@@ -117,21 +114,23 @@ def generate_baggage_units(engine):
                     "baggage_unit_tracking_number": tracking,
                     "baggage_unit_weight_kg":       unit_weight,
                     "baggage_unit_dimensions":      dimension,
-                    "created_at":                   now,
                 })
                 stats["total"] += 1
                 if is_overweight:
                     stats["overweight"] += 1
-                    overweight_batch.append({"tracking": tracking, "overweight_kg": round(unit_weight - max_weight, 2)})
+                    overweight_batch.append({
+                        "tracking":      tracking,
+                        "overweight_kg": round(unit_weight - max_weight, 2)
+                    })
 
                 if len(baggage_batch) >= BATCH_SIZE:
                     conn.execute(text("""
                         INSERT INTO BaggageUnit (
                             boarding_pass_id, baggage_type_id, baggage_unit_tracking_number,
-                            baggage_unit_weight_kg, baggage_unit_dimensions, created_at
+                            baggage_unit_weight_kg, baggage_unit_dimensions
                         ) VALUES (
                             :boarding_pass_id, :baggage_type_id, :baggage_unit_tracking_number,
-                            :baggage_unit_weight_kg, :baggage_unit_dimensions, :created_at
+                            :baggage_unit_weight_kg, :baggage_unit_dimensions
                         )
                     """), baggage_batch)
                     baggage_inserted += len(baggage_batch)
@@ -141,10 +140,10 @@ def generate_baggage_units(engine):
             conn.execute(text("""
                 INSERT INTO BaggageUnit (
                     boarding_pass_id, baggage_type_id, baggage_unit_tracking_number,
-                    baggage_unit_weight_kg, baggage_unit_dimensions, created_at
+                    baggage_unit_weight_kg, baggage_unit_dimensions
                 ) VALUES (
                     :boarding_pass_id, :baggage_type_id, :baggage_unit_tracking_number,
-                    :baggage_unit_weight_kg, :baggage_unit_dimensions, :created_at
+                    :baggage_unit_weight_kg, :baggage_unit_dimensions
                 )
             """), baggage_batch)
             baggage_inserted += len(baggage_batch)
@@ -183,41 +182,39 @@ def generate_baggage_units(engine):
                 checkin_payment_id = conn.execute(text("""
                     INSERT INTO CheckinInPayment (
                         payment_status_id, payment_method_id,
-                        checkin_payment_date_time, checkin_payment_amount, created_at
+                        checkin_payment_date_time, checkin_payment_amount
                     )
                     OUTPUT INSERTED.checkin_payment_id
-                    VALUES (:status_id, :method_id, GETDATE(), :amount, :created_at)
+                    VALUES (:status_id, :method_id, GETDATE(), :amount)
                 """), {
-                    "status_id":  paid_status_id,
-                    "method_id":  method_id,
-                    "amount":     overweight_fee,
-                    "created_at": now,
+                    "status_id": paid_status_id,
+                    "method_id": method_id,
+                    "amount":    overweight_fee,
                 }).scalar_one()
 
                 payment_inserted += 1
                 linking_batch.append({
                     "baggage_unit_id":    bu_id,
                     "checkin_payment_id": checkin_payment_id,
-                    "created_at":         now,
                 })
 
                 if len(linking_batch) >= BATCH_SIZE:
                     conn.execute(text("""
-                        INSERT INTO BaggageUnitCheckInPayment (baggage_unit_id, checkin_payment_id, created_at)
-                        VALUES (:baggage_unit_id, :checkin_payment_id, :created_at)
+                        INSERT INTO BaggageUnitCheckInPayment (baggage_unit_id, checkin_payment_id)
+                        VALUES (:baggage_unit_id, :checkin_payment_id)
                     """), linking_batch)
                     linking_inserted += len(linking_batch)
                     linking_batch.clear()
 
-            logger.info("Overweight processed: %d/%d | Payments: %d", min(i + BATCH_SIZE, len(overweight_batch)), len(overweight_batch), payment_inserted)
+            logger.info("Overweight processed: %d/%d | Payments: %d",
+                        min(i + BATCH_SIZE, len(overweight_batch)), len(overweight_batch), payment_inserted)
 
         if linking_batch:
             conn.execute(text("""
-                INSERT INTO BaggageUnitCheckInPayment (baggage_unit_id, checkin_payment_id, created_at)
-                VALUES (:baggage_unit_id, :checkin_payment_id, :created_at)
+                INSERT INTO BaggageUnitCheckInPayment (baggage_unit_id, checkin_payment_id)
+                VALUES (:baggage_unit_id, :checkin_payment_id)
             """), linking_batch)
             linking_inserted += len(linking_batch)
 
-    logger.info("CheckinInPayment inserted:        %d", payment_inserted)
+    logger.info("CheckinInPayment inserted:          %d", payment_inserted)
     logger.info("BaggageUnitCheckInPayment inserted: %d", linking_inserted)
-

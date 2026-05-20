@@ -11,8 +11,6 @@ BATCH_SIZE = 10_000
 
 
 def generate_booking_items(engine):
-    now = datetime.utcnow()
-
     with engine.begin() as conn:
         logger.info("Loading data...")
 
@@ -243,14 +241,13 @@ def generate_booking_items(engine):
                         "doc_id":     doc["passenger_document_id"],
                         "new_expire": doc["document_date_of_expire"],
                         "new_issue":  doc["document_date_of_issue"],
-                        "updated_at": now,
+                        "updated_at": datetime.utcnow(),
                     })
 
                 booking_batch.append({
                     "booking_id":            booking_id,
                     "passenger_document_id": doc["passenger_document_id"],
                     "flight_price_id":       fp["flight_price_id"],
-                    "created_at":            now,
                 })
                 sold_per_key[key] += 1
 
@@ -266,8 +263,8 @@ def generate_booking_items(engine):
 
             if len(booking_batch) >= BATCH_SIZE:
                 conn.execute(text("""
-                    INSERT INTO BookingItem (booking_id, passenger_document_id, flight_price_id, created_at)
-                    VALUES (:booking_id, :passenger_document_id, :flight_price_id, :created_at)
+                    INSERT INTO BookingItem (booking_id, passenger_document_id, flight_price_id)
+                    VALUES (:booking_id, :passenger_document_id, :flight_price_id)
                 """), booking_batch)
                 inserted += len(booking_batch)
                 booking_batch.clear()
@@ -283,12 +280,10 @@ def generate_booking_items(engine):
 
         if booking_batch:
             conn.execute(text("""
-                INSERT INTO BookingItem (booking_id, passenger_document_id, flight_price_id, created_at)
-                VALUES (:booking_id, :passenger_document_id, :flight_price_id, :created_at)
+                INSERT INTO BookingItem (booking_id, passenger_document_id, flight_price_id)
+                VALUES (:booking_id, :passenger_document_id, :flight_price_id)
             """), booking_batch)
             inserted += len(booking_batch)
 
         logger.info("BookingItems inserted: %d", inserted)
         logger.info("Skipped:              %d", skipped)
-
-        

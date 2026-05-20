@@ -27,22 +27,21 @@ def generate_flight_crew_operations(engine):
         for fo_id, crew_id in records:
             batch.append({
                 "flight_operation_id": fo_id,
-                "flight_crew_id":      crew_id,
-                "created_at":          now,
+                "flight_crew_id":      crew_id
             })
 
             if len(batch) >= BATCH_SIZE:
                 conn.execute(text("""
-                    INSERT INTO FlightCrewFlightOperation (flight_operation_id, flight_crew_id, created_at)
-                    VALUES (:flight_operation_id, :flight_crew_id, :created_at)
+                    INSERT INTO FlightCrewFlightOperation (flight_operation_id, flight_crew_id)
+                    VALUES (:flight_operation_id, :flight_crew_id)
                 """), batch)
                 inserted += len(batch)
                 batch.clear()
 
         if batch:
             conn.execute(text("""
-                INSERT INTO FlightCrewFlightOperation (flight_operation_id, flight_crew_id, created_at)
-                VALUES (:flight_operation_id, :flight_crew_id, :created_at)
+                INSERT INTO FlightCrewFlightOperation (flight_operation_id, flight_crew_id)
+                VALUES (:flight_operation_id, :flight_crew_id)
             """), batch)
             inserted += len(batch)
 
