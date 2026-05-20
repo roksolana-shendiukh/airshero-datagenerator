@@ -5,8 +5,9 @@ from sqlalchemy import text
 
 logger = logging.getLogger(__name__)
 
-TOTAL_PROBLEM_RATE = 0.15
-BATCH_SIZE         = 5_000
+TOTAL_PROBLEM_RATE   = 0.15
+CANCELLED_RATE       = 0.02
+BATCH_SIZE           = 5_000
 
 
 def generate_flight_operations(engine):
@@ -55,14 +56,14 @@ def generate_flight_operations(engine):
             JOIN Route r          ON r.route_id = f.route_id
             JOIN Airfleet a       ON a.airfleet_id = f.airfleet_id
             JOIN FlightStatus fst ON fst.flight_status_id = sf.flight_status_id
-            WHERE fst.flight_status_name = 'Completed'
+            WHERE fst.flight_status_name IN ('Completed', 'Cancelled')
         """)).fetchall()
 
-        logger.info("Total completed flights: %d", len(flights))
+        logger.info("Total flights to process: %d", len(flights))
 
         batch           = []
         inserted        = 0
-        skipped_no_gate = 0
+        skipped         = 0
 
         for f in flights:
             flight_range  = float(f.flight_range)
@@ -72,7 +73,7 @@ def generate_flight_operations(engine):
             arr_time      = f.schedule_arrival_time
 
             if dep_time is None or arr_time is None:
-                skipped_no_gate += 1
+                skipped += 1
                 continue
 
             scheduled_departure = datetime.combine(departs_date, dep_time)
@@ -91,48 +92,63 @@ def generate_flight_operations(engine):
             """), {"airport_id": f.departs_airport_id}).fetchone()
 
             if gate_result is None:
-                skipped_no_gate += 1
+                skipped += 1
                 continue
 
             gate_id = gate_result.gate_id
 
-            if random.random() < TOTAL_PROBLEM_RATE:
-                delay_minutes = random.randint(30, 300)
-                state_id      = random.choice(flight_op_states)
+            if random.random() < CANCELLED_RATE:
+                batch.append({
+                    "sf_id":     f.schedule_flight_id,
+                    "af_id":     f.airfleet_id,
+                    "gate_id":   gate_id,
+                    "op_status": flight_op_statuses["Cancelled"],
+                    "op_state":  random.choice(flight_op_states),
+                    "act_dep":   None,
+                    "act_arr":   None,
+                    "board_s":   None,
+                    "board_e":   None,
+                    "bag_s":     None,
+                    "bag_e":     None,
+                })
             else:
-                state_id = None
-                if is_short and random.random() < 0.10:
-                    delay_minutes = -random.randint(5, 30)
+                if random.random() < TOTAL_PROBLEM_RATE:
+                    delay_minutes = random.randint(30, 300)
+                    state_id      = random.choice(flight_op_states)
                 else:
-                    delay_minutes = random.randint(5, 35)
+                    state_id = None
+                    if is_short and random.random() < 0.10:
+                        delay_minutes = -random.randint(5, 30)
+                    else:
+                        delay_minutes = random.randint(5, 35)
 
-            makeup_minutes   = random.randint(0, 5) if is_short else random.randint(10, 40)
-            actual_departure = scheduled_departure + timedelta(minutes=delay_minutes)
-            actual_arrival   = scheduled_arrival + timedelta(minutes=delay_minutes) - timedelta(minutes=makeup_minutes)
+                makeup_minutes   = random.randint(0, 5) if is_short else random.randint(10, 40)
+                actual_departure = scheduled_departure + timedelta(minutes=delay_minutes)
+                actual_arrival   = scheduled_arrival + timedelta(minutes=delay_minutes) - timedelta(minutes=makeup_minutes)
 
-            if seat_capacity < 100:   boarding_offset = 45
-            elif seat_capacity < 200: boarding_offset = 60
-            elif seat_capacity < 300: boarding_offset = 90
-            else:                     boarding_offset = 120
+                if seat_capacity < 100:   boarding_offset = 45
+                elif seat_capacity < 200: boarding_offset = 60
+                elif seat_capacity < 300: boarding_offset = 90
+                else:                     boarding_offset = 120
 
-            boarding_start = actual_departure - timedelta(minutes=boarding_offset)
-            boarding_end   = actual_departure - timedelta(minutes=random.randint(5, 10))
-            baggage_start  = boarding_start   - timedelta(minutes=random.randint(20, 30))
-            baggage_end    = boarding_start   - timedelta(minutes=random.randint(5, 10))
+                boarding_start = actual_departure - timedelta(minutes=boarding_offset)
+                boarding_end   = actual_departure - timedelta(minutes=random.randint(5, 10))
+                baggage_start  = boarding_start   - timedelta(minutes=random.randint(20, 30))
+                baggage_end    = boarding_start   - timedelta(minutes=random.randint(5, 10))
 
-            batch.append({
-                "sf_id":     f.schedule_flight_id,
-                "af_id":     f.airfleet_id,
-                "gate_id":   gate_id,
-                "op_status": flight_op_statuses["Completed"],
-                "op_state":  state_id,
-                "act_dep":   actual_departure,
-                "act_arr":   actual_arrival,
-                "board_s":   boarding_start.time(),
-                "board_e":   boarding_end.time(),
-                "bag_s":     baggage_start.time(),
-                "bag_e":     baggage_end.time(),
-            })
+                batch.append({
+                    "sf_id":     f.schedule_flight_id,
+                    "af_id":     f.airfleet_id,
+                    "gate_id":   gate_id,
+                    "op_status": flight_op_statuses["Completed"],
+                    "op_state":  state_id,
+                    "act_dep":   actual_departure,
+                    "act_arr":   actual_arrival,
+                    "board_s":   boarding_start.time(),
+                    "board_e":   boarding_end.time(),
+                    "bag_s":     baggage_start.time(),
+                    "bag_e":     baggage_end.time(),
+                })
 
             if len(batch) >= BATCH_SIZE:
                 conn.execute(text("""
@@ -173,6 +189,7 @@ def generate_flight_operations(engine):
             inserted += len(batch)
 
         logger.info("FlightOperation inserted: %d", inserted)
-        if skipped_no_gate > 0:
-            logger.warning("Skipped due to missing gate or schedule: %d", skipped_no_gate)
+        if skipped > 0:
+            logger.warning("Skipped: %d", skipped)
+
             
