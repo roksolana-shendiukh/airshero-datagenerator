@@ -12,7 +12,7 @@ MAX_AIRCRAFT_PER_AIRLINE = 5
 FALLBACK_MIN_AIRCRAFT = 3
 FALLBACK_MAX_AIRCRAFT = 5
 
-RANGE_KM_VARIATION = 0.08  
+RANGE_KM_VARIATION = 0.08 
 
 HANGAR_PROBABILITY = 0.15
 
@@ -52,7 +52,7 @@ def generate_aircraft(engine):
 
         for airfleet in airfleets:
             airfleet_id = airfleet["airfleet_id"]
-            base_range_km = airfleet["aircraft_range_km"]
+            base_range_km = float(airfleet["aircraft_range_km"])
 
             airline_count = airlines_per_airfleet.get(airfleet_id, 0)
 
