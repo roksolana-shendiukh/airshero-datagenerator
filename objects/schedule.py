@@ -21,9 +21,10 @@ EU_AIRPORTS  = {
 }
 
 SEASONS = [
-    ("2025-11-01", "2026-02-28"),
-    ("2026-03-01", "2026-05-31"),
-    ("2026-06-01", "2026-09-30"),
+    ("2026-04-01", "2026-06-30"),
+    ("2026-07-01", "2026-09-30"),
+    ("2026-10-01", "2026-12-31"),
+    ("2027-01-01", "2027-03-31"),
 ]
 
 ALL_DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -204,5 +205,3 @@ def generate_flight_schedules(engine):
         logger.info("DaySchedule inserted:              %d", inserted_ds)
         logger.info("FlightSchedule inserted:           %d", inserted_fs)
         logger.info("FlightScheduleDaySchedule inserted:%d", inserted_fsds)
-
-        
