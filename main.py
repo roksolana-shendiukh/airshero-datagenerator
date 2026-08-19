@@ -11,6 +11,7 @@ from classification import (
 from objects import (
     insert_aaa_data,
     generate_airline_airfleet,
+    generate_aircraft,
     insert_routes,
     generate_flights,
     generate_flight_schedules,
@@ -64,6 +65,7 @@ def main():
     _run("insert_routes",                  insert_routes,                  engine)
     _run("generate_flights",               generate_flights,               engine)
     _run("generate_airline_airfleet",      generate_airline_airfleet,      engine)
+    _run("generate_aircraft",              generate_aircraft,              engine)
     _run("generate_flight_schedules",      generate_flight_schedules,      engine)
     _run("generate_seat_layout",           generate_seat_layout,           engine)
     _run("generate_flight_class",          generate_flight_class,          engine)
@@ -97,5 +99,3 @@ def main():
 if __name__ == "__main__":
     setup_logging()
     main()
-
-    
